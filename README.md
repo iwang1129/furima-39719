@@ -68,13 +68,14 @@
 | region_id          | integer   | null: false                    |
 | city               | string    | null: false                    |
 | block              | string    | null: false                    |
-| building name      | string    |                                |
-| telephone number   | string    | null: false                    |
-| user               | references| null: false, foreign_key: true |
+| building_name      | string    |                                |
+| telephone_number   | string    | null: false                    |
+| order              | references| null: false, foreign_key: true |
 
 <!-- 外部キーはreferences -->
 <!-- 都道府県を保存するカラムでは、商品出品テーブルで使用したactive_hashのデータを兼用できます。
 itemsテーブルで設定した発送先住所のカラム名と同じカラムとなるよう統一 -->
+<!-- 単語と単語の間は＿で区切る -->
 ### Association
 
 - belongs_to :order
