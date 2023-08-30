@@ -1,5 +1,6 @@
 # テーブル設計
-
+<!-- ordersテーブルが注文情報、paymentsテーブルがどこに配達したかなどの住所情報を整理しているため、payments
+テーブルには、usersテーブルとitemsテーブルは紐づかない -->
 ## users テーブル
 
 | Column             | Type   | Options                  |
