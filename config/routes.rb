@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :items, only: :index
-  # Defines the root path route ("/")
+  devise_for :users
+  # devise_forは、ユーザー機能に必要な複数のルーティングを一度に生成してくれるdeviseのメソッド
+  # % rails g devise userでユーザーに関する、モデルやマイグレーションも自動生成。
   root to: 'items#index'
   # トップページを表示する
+  resources :items, only: [:index, :new, :create]
+  
+ 
 end

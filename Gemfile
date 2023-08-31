@@ -74,3 +74,7 @@ end
 group :production do
   gem 'pg'
 end
+
+gem 'pry-rails'
+gem 'devise'
+# ユーザー管理機能を簡単に実装するためのGem
