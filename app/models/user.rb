@@ -15,4 +15,11 @@ class User < ApplicationRecord
          validates :first_name_kana, presence: true
          validates :birth_day, presence: true
          
+         # お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須であること。
+         validates :family_name, format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: "は全角で入力してください" }
+         validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: "は全角で入力してください" }
+
+         # お名前カナ(全角)は、全角（カタカナ）での入力が必須であること。
+         validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力してください" }
+         validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力してください" }
 end
