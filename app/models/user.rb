@@ -20,6 +20,10 @@ class User < ApplicationRecord
          # お名前カナ(全角)は、全角（カタカナ）での入力が必須であること。
          validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力してください" }
          validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力してください" }
+
+        #  パスワードに英数字混合のバリデーションを設定
+        validates :password, format: { with: /\A(?=.*?[a-zA-Z])(?=.*?[0-9]).{6,}\z/, message: "は半角英数字混合で6文字以上入力してください" }
+
 end
 
 # バリエーションを変更したいときは、rails db:migrate:statusでstatusを確認して、変更したい箇所まで、rails db:rollbackして、
