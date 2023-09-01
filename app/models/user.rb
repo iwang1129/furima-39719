@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 # :validatable＝emailとパスワードを記述している。バリデーションが不要
@@ -23,3 +21,6 @@ class User < ApplicationRecord
          validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力してください" }
          validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力してください" }
 end
+
+# バリエーションを変更したいときは、rails db:migrate:statusでstatusを確認して、変更したい箇所まで、rails db:rollbackして、
+# statusがdownになっている状態で変更する。
