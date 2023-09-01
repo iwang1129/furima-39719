@@ -1,8 +1,7 @@
 <%= render "shared/second-header"%>
 
 <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
-<%# デバイスを使ってログインやサインアップをする時のモデルは@user
-    以下でユーザーの入力した内容を保存(create)するためのパスを書く %>
+<
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
@@ -26,7 +25,7 @@
       <span class="indispensable">必須</span>
     </div>
     <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
-    <%# encrypted_passwordだと登録できない %>
+    
   </div>
   <div class='login-btn'>
     <%= f.submit "ログイン" ,class:"login-red-btn" %>

@@ -6,9 +6,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      # encrypted_password は通常、Devise によって内部的に処理されるカラムであり、
-      # 直接ビューファイル内で使用する必要はありません。そのため、ビューファイル内に encrypted_password という記載があるとエラーが発生する可能性があるため
-      # ビューファイルに記述するときはpasswordに変更する必要がある。
+      
       t.string :nickname,           null: false
       t.string :family_name,        null: false
       t.string :first_name,         null: false

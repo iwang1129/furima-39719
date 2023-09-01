@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-# :validatable＝emailとパスワードを記述している。バリデーションが不要
+
          has_many :items
          has_many :orders
 
@@ -13,18 +13,18 @@ class User < ApplicationRecord
          validates :first_name_kana, presence: true
          validates :birth_day, presence: true
          
-         # お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須であること。
+        
          validates :family_name, format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: "は全角で入力してください" }
          validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: "は全角で入力してください" }
 
-         # お名前カナ(全角)は、全角（カタカナ）での入力が必須であること。
+         
          validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力してください" }
          validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力してください" }
 
-        #  パスワードに英数字混合のバリデーションを設定
-        validates :password, format: { with: /\A(?=.*?[a-zA-Z])(?=.*?[0-9]).{6,}\z/, message: "は半角英数字混合で6文字以上入力してください" }
+      
+        PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+        validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください'
 
 end
 
-# バリエーションを変更したいときは、rails db:migrate:statusでstatusを確認して、変更したい箇所まで、rails db:rollbackして、
-# statusがdownになっている状態で変更する。
+
