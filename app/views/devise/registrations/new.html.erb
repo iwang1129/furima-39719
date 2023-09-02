@@ -10,7 +10,7 @@
   </div>
 
   <%= render 'shared/error_messages', model: f.object %>
-  <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+  
 
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -32,7 +32,7 @@
       <span class="indispensable">必須</span>
     </div>
     <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
-    <%# encrypted_passwordだと登録できない %>
+    
     <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
   </div>
   <div class="form-group">

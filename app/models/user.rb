@@ -2,8 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         has_many :items
-         has_many :orders
+        # has_many :items
+        # has_many :orders
 
          
          validates :nickname, presence: true
@@ -14,8 +14,8 @@ class User < ApplicationRecord
          validates :birth_day, presence: true
          
         
-         validates :family_name, format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: "は全角で入力してください" }
-         validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: "は全角で入力してください" }
+         validates :family_name, format: { with: /\A[ぁ-んァ-ヶー-龥々]+\z/, message: "は全角で入力してください" }
+         validates :first_name, format: { with: /\A[ぁ-んァ-ヶー-龥々]+\z/, message: "は全角で入力してください" }
 
          
          validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力してください" }
