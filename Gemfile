@@ -83,4 +83,6 @@ end
 
 gem 'pry-rails'
 gem 'devise'
-# ユーザー管理機能を簡単に実装するためのGem
+gem 'active_hash'
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
