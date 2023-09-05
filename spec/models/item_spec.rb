@@ -8,7 +8,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品の出品登録' do
     context '商品の出品登録ができるとき' do
-      it "全ての値が、存在すれば登録できる" do
+      it '全ての値が、存在すれば登録できる' do
         expect(@item).to be_valid
       end
     end
@@ -61,24 +61,23 @@ RSpec.describe Item, type: :model do
       it '価格が、300円未満だと出品できない' do
         @item.price = 100
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it '価格が、9,999,999円を超えると出品できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it '価格は全角だと出品できない' do
         @item.price = 'あああああ'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'ユーザーが紐づいていないと出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
-
-  end 
+  end
 end

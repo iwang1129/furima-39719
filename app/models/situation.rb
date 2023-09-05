@@ -10,6 +10,6 @@ class Situation < ActiveHash::Base
     { id: 8, name: '家電・スマホ・カメラ' }
   ]
 
-    include ActiveHash::Associations
-    has_many :items
+  include ActiveHash::Associations
+  has_many :items
 end
