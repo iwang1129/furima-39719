@@ -19,6 +19,6 @@ class OrderPayment
     order = Order.create(user_id:, item_id:)
 
     payment = Payment.create(post_code:, region_id:, city:, block:,
-                             telephone_number:)
+                             telephone_number:, order_id: order.id)
   end
 end
