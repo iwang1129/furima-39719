@@ -4,7 +4,8 @@ RSpec.describe OrderPayment, type: :model do
   describe '購入情報の保存' do
     before do
       user = FactoryBot.create(:user)
-      @order_payment = FactoryBot.build(:order_payment, user_id: user.id)
+      item = FactoryBot.create(:user)
+      @order_payment = FactoryBot.build(:order_payment, user_id: user.id, item_id: item.id)
     end
 
     context '内容に問題ない場合' do
@@ -67,6 +68,11 @@ RSpec.describe OrderPayment, type: :model do
         @order_payment.user_id = nil
         @order_payment.valid?
         expect(@order_payment.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空だと保存できない' do
+        @order_payment.item_id = nil
+        @order_payment.valid?
+        expect(@order_payment.errors.full_messages).to include("Item can't be blank")
       end
       it "tokenが空では登録できないこと" do
         @order_payment.token = nil
