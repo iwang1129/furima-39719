@@ -52,13 +52,13 @@ RSpec.describe OrderPayment, type: :model do
       it '電話番号が9桁以下だと保存できない' do
         @order_payment.telephone_number = '12345'
         @order_payment.valid?
-        expect(@order_payment.errors.full_messages).to include("Telephone number is invalid")
+        expect(@order_payment.errors.full_messages).to include('Telephone number is invalid')
       end
       it '電話番号が12桁以上だと保存できない' do
         @order_payment.telephone_number = '123456789012'
         @order_payment.valid?
-        expect(@order_payment.errors.full_messages).to include("Telephone number is invalid")
-      end 
+        expect(@order_payment.errors.full_messages).to include('Telephone number is invalid')
+      end
       it '電話番号は全角だと保存できない' do
         @order_payment.telephone_number = 'あああああ'
         @order_payment.valid?
@@ -74,7 +74,7 @@ RSpec.describe OrderPayment, type: :model do
         @order_payment.valid?
         expect(@order_payment.errors.full_messages).to include("Item can't be blank")
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @order_payment.token = nil
         @order_payment.valid?
         expect(@order_payment.errors.full_messages).to include("Token can't be blank")

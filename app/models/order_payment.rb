@@ -6,21 +6,19 @@ class OrderPayment
     # orderモデルのバリデーション
     validates :user_id
     validates :item_id
-  # paymentモデルのバリデーション
-    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    # paymentモデルのバリデーション
+    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
     validates :region_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :city
     validates :block
-    validates :telephone_number, format: { with: /\A\d{10}$|^\d{11}\z/, message: "is invalid" }
+    validates :telephone_number, format: { with: /\A\d{10}$|^\d{11}\z/, message: 'is invalid' }
     validates :token
   end
 
   def save
-    order = Order.create(user_id: user_id, item_id: item_id)
+    order = Order.create(user_id:, item_id:)
 
-    payment = Payment.create(post_code: post_code, region_id: region_id, city: city, block: block, telephone_number: telephone_number)
+    payment = Payment.create(post_code:, region_id:, city:, block:,
+                             telephone_number:)
   end
 end
-
-
-
