@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   has_one    :order
   belongs_to :user
-  has_one_attached :image
+  has_one_attached :images
 
   validates :name, presence: true
   validates :explanation, presence: true
@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   validates :region_id, presence: true
   validates :shipping_id, presence: true
   validates :price, presence: true
-  validates :image, presence: true
+  validates :images, presence: true
 
   # アクティブハッシュとのアソシエーション
   extend ActiveHash::Associations::ActiveRecordExtensions
